@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calvin Petitqueux | Portfolio BTS SIO SISR</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- MODALE TP -->
+    <div class="modal-overlay" id="tpModalOverlay" onclick="closeTpModal()">
+        <div class="modal-box modal-box--tp" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeTpModal()"><i class="fas fa-times"></i></button>
+            <div class="tp-modal-header">
+                <div class="tp-modal-icon" id="tpModalIcon"></div>
+                <div>
+                    <span class="tp-modal-tag" id="tpModalTag"></span>
+                    <h3 id="tpModalTitle"></h3>
+                    <p class="modal-level" id="tpModalContext"></p>
+                </div>
+            </div>
+            <p id="tpModalDesc"></p>
+            <div class="tp-modal-sections">
+                <div class="tp-section">
+                    <h4><i class="fas fa-bullseye"></i> Objectifs</h4>
+                    <ul id="tpModalObjectifs" class="modal-list"></ul>
+                </div>
+                <div class="tp-section">
+                    <h4><i class="fas fa-tools"></i> Outils & Technologies</h4>
+                    <div class="modal-tags" id="tpModalTools"></div>
+                </div>
+                <div class="tp-section">
+                    <h4><i class="fas fa-list-ol"></i> Étapes réalisées</h4>
+                    <ul id="tpModalSteps" class="modal-list modal-list--steps"></ul>
+                </div>
+            </div>
+            <a id="tpModalDownload" href="#" class="btn" download style="margin-top:8px;width:100%;justify-content:center">
+                <i class="fas fa-file-download"></i> Télécharger la documentation PDF
+            </a>
+        </div>
+    </div>
+
+    <!-- MODALE COMPÉTENCES -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-icon" id="modalIcon"></div>
+            <h3 id="modalTitle"></h3>
+            <p class="modal-level" id="modalLevel"></p>
+            <p id="modalDesc"></p>
+            <ul id="modalList" class="modal-list"></ul>
+            <div class="modal-tags" id="modalTags"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <!-- LOGO SVG CUSTOM -->
+                <a href="#" class="logo">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" rx="12" fill="#0047AB"/>
+                        <!-- Réseau stylisé -->
+                        <circle cx="24" cy="14" r="4" fill="white" opacity="0.9"/>
+                        <circle cx="12" cy="32" r="4" fill="white" opacity="0.7"/>
+                        <circle cx="36" cy="32" r="4" fill="white" opacity="0.7"/>
+                        <line x1="24" y1="18" x2="12" y2="28" stroke="white" stroke-width="1.5" opacity="0.5"/>
+                        <line x1="24" y1="18" x2="36" y2="28" stroke="white" stroke-width="1.5" opacity="0.5"/>
+                        <line x1="16" y1="32" x2="32" y2="32" stroke="white" stroke-width="1.5" opacity="0.5"/>
+                        <!-- Initiales CP -->
+                        <text x="24" y="44" text-anchor="middle" font-family="Syne, sans-serif" font-weight="800" font-size="7" fill="white" opacity="0.9">CP</text>
+                    </svg>
+                    <span class="logo-text">Calvin<strong>P</strong></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#certs">Certifications</a></li>
+                    <li><a href="#competences">Compétences</a></li>
+                    <li><a href="#projects">Réalisations</a></li>
+                    <li><a href="#contact" class="nav-cta">Contact</a></li>
+                </ul>
+                <button class="burger" onclick="toggleMenu()" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🎓 BTS SIO SISR · Promo 2025</div>
+                <div class="hero-avatar">
+                    <img src="assets/images/photo_calvin.jpg" alt="Calvin Petitqueux" class="profile-img">
+                    <div class="avatar-ring"></div>
+                    <div class="avatar-status"><span></span> Disponible</div>
+                </div>
+                <h1>Calvin <span class="highlight">Petitqueux</span></h1>
+                <p class="subtitle">Étudiant BTS SIO (SISR) @ Lycée Monge</p>
+                <p class="hero-tagline">Passionné par les réseaux, la cybersécurité et l'administration système.<br>Futur Bachelor ASR @ CESI.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn"><i class="fas fa-folder-open"></i> Mes Réalisations</a>
+                    <a href="assets/docs/Calvin_Petitqueux_CV.pdf" class="btn btn-secondary" download><i class="fas fa-file-download"></i> Mon CV</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><strong>2</strong><span>Ans de formation</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><strong>6+</strong><span>TPs documentés</span></div>
+                    <div class="stat-divider"></div>
+                    <div class="stat"><strong>2</strong><span>Certifications</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll"><span>Défiler</span><i class="fas fa-chevron-down"></i></div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-label">Mon parcours</div>
+            <h2>À Propos de Moi</h2>
+            <div class="about-grid">
+                <div class="about-card about-card--blue">
+                    <div class="about-card-icon"><i class="fas fa-graduation-cap fa-2x"></i></div>
+                    <h3>BTS SIO · Lycée Monge</h3>
+                    <p>En formation SISR, j'apprends à gérer et sécuriser des parcs informatiques complexes : infrastructure, réseaux, virtualisation et supervision.</p>
+                    <div class="about-tags">
+                        <span>Réseaux</span><span>Sécurité</span><span>Linux</span>
+                    </div>
+                </div>
+                <div class="about-card about-card--dark">
+                    <div class="about-card-icon"><i class="fas fa-rocket fa-2x"></i></div>
+                    <h3>Bachelor ASR · CESI</h3>
+                    <p>Je vise une expertise en administration réseaux et Cloud pour accompagner la transformation numérique des entreprises et répondre aux enjeux de cybersécurité.</p>
+                    <div class="about-tags">
+                        <span>Cloud</span><span>DevOps</span><span>Cyber</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certs" class="certifications bg-light">
+        <div class="container">
+            <div class="section-label">Mes certifications</div>
+            <h2>Certifications Obtenues</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-logo cert-logo--anssi">
+                        <i class="fas fa-user-shield fa-2x"></i>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-badge">Validé</span>
+                        <h3>MOOC SecNumAcadémie</h3>
+                        <p class="cert-org"><i class="fas fa-building"></i> ANSSI</p>
+                        <p class="cert-desc">Fondamentaux de la cybersécurité et hygiène informatique selon les standards nationaux.</p>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-logo cert-logo--cisco">
+                        <i class="fas fa-network-wired fa-2x"></i>
+                    </div>
+                    <div class="cert-body">
+                        <span class="cert-badge">Validé</span>
+                        <h3>CyberOps Associate</h3>
+                        <p class="cert-org"><i class="fas fa-building"></i> Cisco Academy</p>
+                        <p class="cert-desc">Détection d'intrusions, analyse de trafic réseau et réponse aux incidents de sécurité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES INTERACTIVES -->
+    <section id="competences" class="competences">
+        <div class="container">
+            <div class="section-label">Cliquez pour en savoir plus</div>
+            <h2>Compétences Techniques</h2>
+            <p class="section-subtitle">Chaque carte est cliquable pour afficher le détail de la compétence.</p>
+
+            <div class="skills-grid">
+
+                <div class="skill-card" onclick="openModal('reseau')" tabindex="0" role="button" aria-label="Voir les détails sur Réseaux & Infrastructure">
+                    <div class="skill-icon-wrap" style="--clr:#0047AB">
+                        <i class="fas fa-network-wired fa-2x"></i>
+                    </div>
+                    <h3>Réseaux & Infrastructure</h3>
+                    <p>TCP/IP, VLAN, routage, switching</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+                <div class="skill-card" onclick="openModal('linux')" tabindex="0" role="button">
+                    <div class="skill-icon-wrap" style="--clr:#E95420">
+                        <i class="fab fa-linux fa-2x"></i>
+                    </div>
+                    <h3>Administration Linux</h3>
+                    <p>Debian, Ubuntu Server, Bash</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+                <div class="skill-card" onclick="openModal('windows')" tabindex="0" role="button">
+                    <div class="skill-icon-wrap" style="--clr:#00A4EF">
+                        <i class="fab fa-windows fa-2x"></i>
+                    </div>
+                    <h3>Windows Server & AD</h3>
+                    <p>Active Directory, GPO, DHCP, DNS</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+                <div class="skill-card" onclick="openModal('cyber')" tabindex="0" role="button">
+                    <div class="skill-icon-wrap" style="--clr:#C0392B">
+                        <i class="fas fa-shield-alt fa-2x"></i>
+                    </div>
+                    <h3>Cybersécurité</h3>
+                    <p>Kali Linux, tests d'intrusion, pare-feu</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+                <div class="skill-card" onclick="openModal('virtualisation')" tabindex="0" role="button">
+                    <div class="skill-icon-wrap" style="--clr:#607D8B">
+                        <i class="fas fa-server fa-2x"></i>
+                    </div>
+                    <h3>Virtualisation</h3>
+                    <p>VMware, VirtualBox, Proxmox</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+                <div class="skill-card" onclick="openModal('services')" tabindex="0" role="button">
+                    <div class="skill-icon-wrap" style="--clr:#27AE60">
+                        <i class="fas fa-cogs fa-2x"></i>
+                    </div>
+                    <h3>Services Réseau</h3>
+                    <p>SSH, DNS, Mail, VPN, DHCP</p>
+                    <div class="skill-level">
+                        <span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot active"></span><span class="level-dot"></span>
+                    </div>
+                    <span class="skill-hint"><i class="fas fa-mouse-pointer"></i> Cliquer pour les détails</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RÉALISATIONS -->
+    <section id="projects" class="projects bg-light">
+        <div class="container">
+            <div class="section-label">Mon travail</div>
+            <h2>Réalisations Professionnelles</h2>
+
+            <h3 class="sub-section-title">Parcours en Entreprise & Examen</h3>
+            <div class="docs-admin-grid">
+                <div class="project-card admin-card">
+                    <div class="card-header"><i class="fas fa-table fa-lg"></i> <strong>Épreuve E5</strong></div>
+                    <p class="project-desc">Tableau de synthèse des réalisations professionnelles et des compétences validées en stage et en formation.</p>
+                    <a href="assets/docs/Tableau_Synthese_E5.csv" class="btn-download" download><i class="fas fa-file-excel"></i> Télécharger le Tableau</a>
+                </div>
+                <div class="project-card admin-card">
+                    <div class="card-header"><i class="fas fa-hospital fa-lg"></i> <strong>Stage 1ère Année</strong></div>
+                    <p class="project-desc">Technicien informatique au CHU Manchester. Installation de postes et assistance aux utilisateurs.</p>
+                    <a href="assets/docs/Attestation_Stage_CHU.pdf" class="btn-download" download><i class="fas fa-file-pdf"></i> Attestation de stage</a>
+                </div>
+                <div class="project-card admin-card">
+                    <div class="card-header"><i class="fas fa-clinic-medical fa-lg"></i> <strong>Stage 2ème Année</strong></div>
+                    <p class="project-desc">Mission au CH de Bélair : Déploiement automatisé (FOG), administration système et réseaux.</p>
+                    <a href="assets/docs/Attestation_Stage_Belair.pdf" class="btn-download" download><i class="fas fa-file-pdf"></i> Attestation de stage</a>
+                </div>
+            </div>
+
+            <h3 class="sub-section-title" style="margin-top:60px">Documentations Techniques (TP)</h3>
+            <p class="section-subtitle" style="text-align:left;margin-bottom:24px;">Cliquez sur une carte pour voir le détail du TP et télécharger la documentation.</p>
+            <div class="projects-grid">
+                <div class="project-card tp-card" onclick="openTpModal('ssh')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--security">Sécurité</div>
+                    <h3><i class="fas fa-terminal"></i> Serveur SSH</h3>
+                    <p class="project-desc">Sécurisation des accès distants via authentification par clé et configuration avancée du daemon.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+                <div class="project-card tp-card" onclick="openTpModal('dns')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--network">Réseau</div>
+                    <h3><i class="fas fa-globe"></i> Serveur DNS BIND9</h3>
+                    <p class="project-desc">Mise en place du nommage local avec zones directes et inverses sur Debian.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+                <div class="project-card tp-card" onclick="openTpModal('vpn')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--network">Réseau</div>
+                    <h3><i class="fas fa-lock"></i> Infrastructure VPN</h3>
+                    <p class="project-desc">Interconnexion de sites distants avec tunnel sécurisé et authentification forte.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+                <div class="project-card tp-card" onclick="openTpModal('mail')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--mail">Messagerie</div>
+                    <h3><i class="fas fa-envelope"></i> Serveur Mail</h3>
+                    <p class="project-desc">Messagerie interne sécurisée avec Postfix, Dovecot et filtrage anti-spam.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+                <div class="project-card tp-card" onclick="openTpModal('ad')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--windows">Windows</div>
+                    <h3><i class="fas fa-sitemap"></i> Active Directory</h3>
+                    <p class="project-desc">Gestion parent-enfant, délégation d'autorité, GPO et ACLs en environnement d'entreprise.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+                <div class="project-card tp-card" onclick="openTpModal('kali')" tabindex="0" role="button">
+                    <div class="tp-tag tp-tag--cyber">Cybersécurité</div>
+                    <h3><i class="fas fa-bug"></i> Audit Kali Linux</h3>
+                    <p class="project-desc">Tests d'intrusion méthodiques et mise en place des contre-mesures défensives adaptées.</p>
+                    <span class="skill-hint" style="opacity:1;transform:none"><i class="fas fa-mouse-pointer"></i> Voir les détails</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-label">Discutons</div>
+            <h2>Me Contacter</h2>
+            <p class="section-subtitle">Je suis disponible pour un stage, une alternance ou un projet.</p>
+            <div class="contact-wrapper">
+                <a href="mailto:calvinpetitqueux008@gmail.com" class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <i class="fas fa-envelope fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3>Email</h3>
+                        <p>calvinpetitqueux008@gmail.com</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
+                <a href="tel:+33626486752" class="contact-card">
+                    <div class="contact-icon-wrap">
+                        <i class="fas fa-phone-alt fa-2x"></i>
+                    </div>
+                    <div>
+                        <h3>Téléphone</h3>
+                        <p>06 26 48 67 52</p>
+                    </div>
+                    <i class="fas fa-arrow-right contact-arrow"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="legal" class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <a href="#" class="footer-logo">
+                    <svg width="36" height="36" viewBox="0 0 48 48" fill="none">
+                        <rect width="48" height="48" rx="12" fill="white" opacity="0.1"/>
+                        <circle cx="24" cy="14" r="4" fill="white" opacity="0.8"/>
+                        <circle cx="12" cy="32" r="4" fill="white" opacity="0.6"/>
+                        <circle cx="36" cy="32" r="4" fill="white" opacity="0.6"/>
+                        <line x1="24" y1="18" x2="12" y2="28" stroke="white" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="24" y1="18" x2="36" y2="28" stroke="white" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="16" y1="32" x2="32" y2="32" stroke="white" stroke-width="1.5" opacity="0.4"/>
+                    </svg>
+                    <span>Calvin Petitqueux</span>
+                </a>
+                <p>Portfolio BTS SIO SISR · Promo 2025</p>
+            </div>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Mentions Légales</h3>
+                    <p>Éditeur : Calvin Petitqueux | Monthermé (08800)</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Confidentialité</h3>
+                    <p>Site statique sans cookies de traçage. Conformité RGPD respectée.</p>
+                </div>
+            </div>
+            <p class="copyright">© 2025 Calvin Petitqueux — Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+    // ── Données des compétences ──────────────────────────────────────
+    const skills = {
+        reseau: {
+            icon: '<i class="fas fa-network-wired fa-3x" style="color:#0047AB"></i>',
+            title: 'Réseaux & Infrastructure',
+            level: '⭐⭐⭐⭐ Avancé',
+            desc: 'Maîtrise des protocoles réseau fondamentaux et conception d\'infrastructures physiques et virtuelles.',
+            list: [
+                'Modèle OSI / TCP-IP en profondeur',
+                'Configuration de VLAN, trunking 802.1Q',
+                'Routage statique et dynamique (OSPF, RIP)',
+                'Mise en place de spanning-tree (STP)',
+                'Câblage et baies de brassage',
+                'Analyse de trafic avec Wireshark'
+            ],
+            tags: ['TCP/IP','VLAN','Cisco','Wireshark','Switch','Router']
+        },
+        linux: {
+            icon: '<i class="fab fa-linux fa-3x" style="color:#E95420"></i>',
+            title: 'Administration Linux',
+            level: '⭐⭐⭐⭐ Avancé',
+            desc: 'Administration de serveurs Linux Debian/Ubuntu : installation, configuration, scripting et maintenance.',
+            list: [
+                'Installation et hardening Debian/Ubuntu Server',
+                'Scripting Bash pour l\'automatisation',
+                'Gestion des utilisateurs, groupes et droits',
+                'Cron, systemd, gestion des services',
+                'LVM, partitionnement avancé',
+                'Journalisation avec journalctl et rsyslog'
+            ],
+            tags: ['Debian','Ubuntu','Bash','Systemd','LVM','SSH']
+        },
+        windows: {
+            icon: '<i class="fab fa-windows fa-3x" style="color:#00A4EF"></i>',
+            title: 'Windows Server & Active Directory',
+            level: '⭐⭐⭐⭐ Avancé',
+            desc: 'Déploiement et administration d\'environnements Windows Server avec gestion centralisée des utilisateurs.',
+            list: [
+                'Installation et configuration Windows Server 2019/2022',
+                'Active Directory : domaines parent-enfant',
+                'GPO (Group Policy Objects) avancées',
+                'Gestion des ACLs et partages réseau',
+                'Déploiement automatisé avec FOG Project',
+                'DNS, DHCP et rôles ADDS/ADCS'
+            ],
+            tags: ['Active Directory','GPO','Windows Server','DHCP','DNS','FOG']
+        },
+        cyber: {
+            icon: '<i class="fas fa-shield-alt fa-3x" style="color:#C0392B"></i>',
+            title: 'Cybersécurité',
+            level: '⭐⭐⭐ Intermédiaire',
+            desc: 'Approche offensive et défensive de la sécurité informatique : audit, tests d\'intrusion et contre-mesures.',
+            list: [
+                'Tests d\'intrusion avec Kali Linux',
+                'Utilisation de Nmap, Metasploit, Burp Suite',
+                'Configuration et audit de pare-feu (iptables, pfSense)',
+                'Analyse de logs et détection d\'intrusions (IDS)',
+                'Bonnes pratiques selon les recommandations ANSSI',
+                'Certification CyberOps Associate (Cisco)'
+            ],
+            tags: ['Kali Linux','Nmap','Metasploit','pfSense','ANSSI','IDS']
+        },
+        virtualisation: {
+            icon: '<i class="fas fa-server fa-3x" style="color:#607D8B"></i>',
+            title: 'Virtualisation',
+            level: '⭐⭐⭐ Intermédiaire',
+            desc: 'Création et gestion d\'environnements virtualisés pour les labs, la formation et la production.',
+            list: [
+                'VMware Workstation / ESXi',
+                'VirtualBox pour les environnements de test',
+                'Proxmox VE (gestion de clusters)',
+                'Création et gestion de snapshots',
+                'Réseaux virtuels (NAT, Bridge, Host-Only)',
+                'Migration et sauvegarde de machines virtuelles'
+            ],
+            tags: ['VMware','VirtualBox','Proxmox','ESXi','Snapshot','vSwitch']
+        },
+        services: {
+            icon: '<i class="fas fa-cogs fa-3x" style="color:#27AE60"></i>',
+            title: 'Services Réseau',
+            level: '⭐⭐⭐⭐ Avancé',
+            desc: 'Déploiement et configuration des services réseau essentiels en environnement d\'entreprise.',
+            list: [
+                'SSH : sécurisation et authentification par clé',
+                'DNS avec BIND9 : zones directes et inverses',
+                'Serveur mail : Postfix + Dovecot',
+                'VPN site-à-site et client (OpenVPN, IPsec)',
+                'DHCP : plages, réservations, options',
+                'Proxy et reverse proxy (Nginx, Apache)'
+            ],
+            tags: ['SSH','DNS','BIND9','Postfix','OpenVPN','Nginx']
+        }
+    };
+
+    function openModal(key) {
+        const s = skills[key];
+        document.getElementById('modalIcon').innerHTML = s.icon;
+        document.getElementById('modalTitle').textContent = s.title;
+        document.getElementById('modalLevel').textContent = s.level;
+        document.getElementById('modalDesc').textContent = s.desc;
+        const ul = document.getElementById('modalList');
+        ul.innerHTML = s.list.map(i => `<li><i class="fas fa-check-circle"></i> ${i}</li>`).join('');
+        const tags = document.getElementById('modalTags');
+        tags.innerHTML = s.tags.map(t => `<span class="tag">${t}</span>`).join('');
+        document.getElementById('modalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    // ── Données des TPs ──────────────────────────────────────────────
+    const tps = {
+        ssh: {
+            icon: '<i class="fas fa-terminal fa-2x" style="color:#0047AB"></i>',
+            tag: 'Sécurité',
+            tagClass: 'tp-tag--security',
+            title: 'Serveur SSH',
+            context: 'TP de 1ère année · Environnement Debian Linux',
+            desc: 'Configuration complète d\'un serveur SSH sécurisé sous Debian, depuis l\'installation jusqu\'à la mise en place de l\'authentification par clés cryptographiques et le durcissement du daemon.',
+            objectifs: [
+                'Installer et activer le service OpenSSH Server',
+                'Générer une paire de clés RSA/ED25519 pour l\'authentification',
+                'Configurer sshd_config pour désactiver l\'authentification par mot de passe',
+                'Restreindre l\'accès SSH à des utilisateurs et IP spécifiques',
+                'Tester la connexion distante sécurisée depuis un client'
+            ],
+            tools: ['OpenSSH','Debian','RSA/ED25519','sshd_config','Putty','Wireshark'],
+            steps: [
+                'Installation du paquet openssh-server',
+                'Génération des clés avec ssh-keygen',
+                'Copie de la clé publique sur le serveur (ssh-copy-id)',
+                'Édition de /etc/ssh/sshd_config : PasswordAuthentication no, PermitRootLogin no',
+                'Redémarrage du service et tests de connexion',
+                'Vérification des logs dans /var/log/auth.log'
+            ],
+            file: 'assets/docs/PetitqueuxCalvin Documentation Installer et configurer un serveur SSH (1).pdf'
+        },
+        dns: {
+            icon: '<i class="fas fa-globe fa-2x" style="color:#27AE60"></i>',
+            tag: 'Réseau',
+            tagClass: 'tp-tag--network',
+            title: 'Serveur DNS BIND9',
+            context: 'TP de 1ère année · Environnement Debian Linux',
+            desc: 'Mise en place d\'un serveur DNS autoritaire avec BIND9 sur Debian, avec création des zones directes et inverses pour la résolution de noms en réseau local.',
+            objectifs: [
+                'Installer et configurer BIND9 comme serveur DNS local',
+                'Créer une zone directe (nom → IP) pour le domaine interne',
+                'Créer une zone inverse (IP → nom) pour la résolution PTR',
+                'Configurer les forwarders vers un DNS externe (8.8.8.8)',
+                'Tester la résolution avec nslookup et dig'
+            ],
+            tools: ['BIND9','Debian','nslookup','dig','named.conf','Zone files'],
+            steps: [
+                'Installation du paquet bind9',
+                'Édition de /etc/bind/named.conf.local pour déclarer les zones',
+                'Création du fichier de zone directe db.mondomaine.lan',
+                'Création du fichier de zone inverse db.192.168.1',
+                'Configuration des forwarders dans named.conf.options',
+                'Redémarrage du service et tests avec dig et nslookup'
+            ],
+            file: 'assets/docs/Petitqueux Calvin tp-dns (1).pdf'
+        },
+        vpn: {
+            icon: '<i class="fas fa-lock fa-2x" style="color:#8E44AD"></i>',
+            tag: 'Réseau',
+            tagClass: 'tp-tag--network',
+            title: 'Infrastructure VPN',
+            context: 'TP de 2ème année · Environnement réseau simulé',
+            desc: 'Mise en place d\'un tunnel VPN sécurisé pour interconnecter deux sites distants, permettant la communication chiffrée entre les réseaux LAN via Internet.',
+            objectifs: [
+                'Comprendre et configurer un tunnel VPN site-à-site',
+                'Mettre en place l\'authentification par certificats',
+                'Assurer la confidentialité des échanges inter-sites',
+                'Configurer le routage pour faire passer le trafic dans le tunnel',
+                'Vérifier l\'étanchéité du tunnel avec des captures réseau'
+            ],
+            tools: ['OpenVPN','pfSense','Certificats X.509','IPsec','Wireshark','GNS3'],
+            steps: [
+                'Configuration de l\'autorité de certification (CA)',
+                'Génération des certificats serveur et client',
+                'Configuration du serveur OpenVPN (server.conf)',
+                'Configuration du client et import des certificats',
+                'Mise en place des règles de routage et de pare-feu',
+                'Tests de connectivité et vérification du chiffrement'
+            ],
+            file: 'assets/docs/Petitqueux Calvin TP VPN.pdf'
+        },
+        mail: {
+            icon: '<i class="fas fa-envelope fa-2x" style="color:#E67E22"></i>',
+            tag: 'Messagerie',
+            tagClass: 'tp-tag--mail',
+            title: 'Serveur Mail',
+            context: 'TP de 2ème année · Environnement Debian Linux',
+            desc: 'Déploiement d\'une infrastructure de messagerie interne complète avec Postfix (MTA) et Dovecot (MDA/IMAP), incluant la configuration de l\'anti-spam et du chiffrement TLS.',
+            objectifs: [
+                'Installer et configurer Postfix comme serveur SMTP',
+                'Configurer Dovecot pour l\'accès IMAP/POP3',
+                'Mettre en place le chiffrement TLS des échanges',
+                'Configurer les enregistrements DNS (MX, SPF)',
+                'Tester l\'envoi et la réception via un client mail'
+            ],
+            tools: ['Postfix','Dovecot','TLS/SSL','Thunderbird','DNS MX','SpamAssassin'],
+            steps: [
+                'Installation de postfix, dovecot-imapd et dovecot-pop3d',
+                'Configuration de main.cf : domaine, relais, boîtes aux lettres',
+                'Génération d\'un certificat TLS auto-signé',
+                'Configuration de Dovecot pour l\'authentification',
+                'Déclaration de l\'enregistrement MX dans le DNS',
+                'Tests d\'envoi/réception avec Thunderbird'
+            ],
+            file: 'assets/docs/Petitqueux Calvin compte-rendu mail (2).pdf'
+        },
+        ad: {
+            icon: '<i class="fab fa-windows fa-2x" style="color:#00A4EF"></i>',
+            tag: 'Windows',
+            tagClass: 'tp-tag--windows',
+            title: 'Active Directory',
+            context: 'TP de 2ème année · Windows Server 2019',
+            desc: 'Mise en place d\'une infrastructure Active Directory avec relation parent-enfant entre domaines, délégation d\'autorité, politiques de groupe (GPO) et gestion fine des droits via les ACLs.',
+            objectifs: [
+                'Déployer un contrôleur de domaine racine (domaine parent)',
+                'Créer un domaine enfant et établir la relation de confiance',
+                'Configurer des GPO pour la gestion centralisée des postes',
+                'Mettre en place la délégation d\'administration',
+                'Gérer les ACLs sur les dossiers partagés réseau'
+            ],
+            tools: ['Windows Server 2019','Active Directory','GPO','ADUC','DNS','Sysvol'],
+            steps: [
+                'Promotion du serveur en contrôleur de domaine (ADDS)',
+                'Création du domaine parent (ex: monentreprise.local)',
+                'Ajout d\'un second serveur et création du domaine enfant',
+                'Vérification de la relation de confiance bidirectionnelle',
+                'Création et liaison des GPO aux UO (Unités d\'Organisation)',
+                'Configuration des ACLs et partages réseau avec délégation'
+            ],
+            file: 'assets/docs/Petitqueux Calvin TP AD parent-enfant (1).pdf'
+        },
+        kali: {
+            icon: '<i class="fas fa-bug fa-2x" style="color:#C0392B"></i>',
+            tag: 'Cybersécurité',
+            tagClass: 'tp-tag--cyber',
+            title: 'Audit Kali Linux',
+            context: 'TP de 2ème année · Environnement isolé (Lab)',
+            desc: 'Réalisation d\'un audit de sécurité complet sur un réseau de test en utilisant les outils de Kali Linux, suivi de la mise en place des contre-mesures adaptées pour corriger les vulnérabilités identifiées.',
+            objectifs: [
+                'Réaliser une phase de reconnaissance (scanning réseau)',
+                'Identifier les services exposés et leurs versions',
+                'Exploiter des vulnérabilités dans un environnement contrôlé',
+                'Documenter les failles découvertes selon une méthodologie',
+                'Proposer et appliquer des contre-mesures correctives'
+            ],
+            tools: ['Kali Linux','Nmap','Metasploit','Burp Suite','Hydra','Netcat'],
+            steps: [
+                'Découverte du réseau avec nmap -sV -O (scan des ports et OS)',
+                'Énumération des services et recherche de CVE associés',
+                'Exploitation d\'une vulnérabilité avec Metasploit Framework',
+                'Élévation de privilèges et accès aux ressources sensibles',
+                'Rapport des vulnérabilités avec score CVSS',
+                'Application des patchs et vérification de la correction'
+            ],
+            file: 'assets/docs/Compte rendu tp kali TL PC.pdf'
+        }
+    };
+
+    function openTpModal(key) {
+        const t = tps[key];
+        document.getElementById('tpModalIcon').innerHTML = t.icon;
+        document.getElementById('tpModalTag').textContent = t.tag;
+        document.getElementById('tpModalTag').className = 'tp-modal-tag ' + t.tagClass;
+        document.getElementById('tpModalTitle').textContent = t.title;
+        document.getElementById('tpModalContext').textContent = t.context;
+        document.getElementById('tpModalDesc').textContent = t.desc;
+        document.getElementById('tpModalObjectifs').innerHTML = t.objectifs.map(i => `<li><i class="fas fa-check-circle"></i> ${i}</li>`).join('');
+        document.getElementById('tpModalTools').innerHTML = t.tools.map(t => `<span class="tag">${t}</span>`).join('');
+        document.getElementById('tpModalSteps').innerHTML = t.steps.map((s, i) => `<li><span class="step-num">${i+1}</span> ${s}</li>`).join('');
+        document.getElementById('tpModalDownload').href = t.file;
+        document.getElementById('tpModalOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeTpModal() {
+        document.getElementById('tpModalOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeTpModal(); } });
+
+    // Keyboard support for TP cards
+    document.querySelectorAll('.tp-card').forEach(card => {
+        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') card.click(); });
+    });
+
+    
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') card.click(); });
+    });
+
+    // Burger menu
+    function toggleMenu() {
+        document.querySelector('.nav-links').classList.toggle('open');
+        document.querySelector('.burger').classList.toggle('active');
+    }
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+        document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer pour animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .project-card, .cert-card, .about-card, .contact-card').forEach(el => {
+        observer.observe(el);
+    });
+    </script>
+</body>
+</html>
